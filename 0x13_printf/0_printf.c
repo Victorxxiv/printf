@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * _printf - Produces output according to a format.
@@ -26,7 +27,7 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					/* Handle character argument */
-					count += write(1, &va_arg(args, int), 1);
+					count += write(1, &args, 1);
 					break;
 				case 's':
 					/* Handle string argument */

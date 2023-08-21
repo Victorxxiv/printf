@@ -1,13 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h>  // Include necessary headers
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 
-/* Declare function prototypes */
+/* Function prototype for _printf */
 int _printf(const char *format, ...);
-void otherFunction(void); // Example of another function
-
-/* Define macros */
-#define BUFFER_SIZE 1024
 
 #endif /* MAIN_H */
