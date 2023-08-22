@@ -1,62 +1,69 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
-#include <string.h>
+#include <stdarg.h>  /* Required for variable arguments */
+#include <stddef.h>  /* Include this for NULL definition */
 
 /**
  * _printf - Produces output according to a format.
  * @format: The format string.
- * @...: Variable number of arguments.
- *
- * Return: The number of characters printed.
+ * @...: Additional arguments for format placeholders.
+ * Return: The number of characters printed (excluding the null byte).
  */
 int _printf(const char *format, ...)
 {
-	va_list args;   /* Declare a variable to hold the arguments */
-	int count = 0;  /* Initialize the character count */
-	char *str_arg;  /* Declare a variable to hold string arguments */
+	va_list args;
+	int count = 0;
+	const char *ptr;
 
-	va_start(args, format); /* Initialize the argument list */
+	va_start(args, format);
 
-	while (*format)
+	for (ptr = format; *ptr != '\0'; ptr++)
 	{
-		if (*format == '%') /* Check for the start of a conversion specifier */
+		if (*ptr != '%')
 		{
-			format++; /* Move past '%' */
-			switch (*format)
-			{
-				case 'c':
-					/* Handle character argument */
-					count += write(1, &args, 1);
-					break;
-				case 's':
-					/* Handle string argument */
-					str_arg = va_arg(args, char *);
-					if (str_arg)
-						count += write(1, str_arg, strlen(str_arg));
-					else
-						count += write(1, "(null)", 6);
-					break;
-				case '%':
-					/* Handle '%' character */
-					count += write(1, "%", 1);
-					break;
-				default:
-					/* Handle unknown conversion specifiers */
-					count += write(1, "%", 1);
-					count += write(1, &(*format), 1);
-					break;
-			}
+			_putchar(*ptr);
+			count++;
 		}
 		else
 		{
-			/* Regular character, print as is */
-			count += write(1, format, 1);
+			ptr++;  /* Move past '%' character */
+			if (*ptr == 'c')
+			{
+				/* Print a char argument */
+				char c = va_arg(args, int); /* char gets promoted to int */
+
+				_putchar(c);
+				count++;
+			}
+			else if (*ptr == 's')
+			{
+				/* Print a string argument */
+				char *str = va_arg(args, char *);
+
+				if (str == NULL)
+					str = "(null)";
+				while (*str != '\0')
+				{
+					_putchar(*str);
+					count++;
+					str++;
+				}
+			}
+			else if (*ptr == '%')
+			{
+				_putchar('%');
+				count++;
+			}
+			else
+			{
+				/* Handle unsupported conversion specifier */
+				_putchar('%');
+				_putchar(*ptr);
+				count += 2;
+			}
 		}
-		format++; /* Move to the next character in format */
 	}
 
-	va_end(args); /* Clean up the argument list */
+	va_end(args);
 
 	return (count);
 }
