@@ -10,7 +10,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int printed_chars = 0; /*counter for the number of chars printed*/
+	int printed_char = 0; /*counter for the number of chars printed*/
 		va_list args; /*variable argument list*/
 
 	va_start(args, format); /*initialize the variable argument list*/
@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			char c = va_arg(args, int); /*get character argument*/
 
 			_putchar(c); /*print the char*/
-			printed chars++;
+			printed_char++;
 		}
 		else if (*format == 's') /*handle string format specifier*/
 		{
@@ -40,24 +40,24 @@ int _printf(const char *format, ...)
 			{
 				_putchar(*s); /*print each char*/
 				s++;
-				printed chars++;
+				printed_char++;
 			}
 			else if (*format == '%') /*handle literal '%'*/
 			{
 				_putchar('%'); /*print '%' char*/
-				printed_chars++;
-			}
-		       	else /*handle invalid format specifier*/
+				printed_char++;
+			{
+				else /*handle invalid format specifier*/
 			{
 				_putchar('%'); /*print '%'*/
 				_putchar(*format); /*print the inalid char*/
-				printed chars += 2;
+				printed_char += 2;
 			}
 		}
 		else
 		{
 		_putchar(*format); /*print regular chars*/
-			printed chars++;
+			printed_char++;
 		}
 		format++;
 		}
