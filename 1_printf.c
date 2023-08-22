@@ -8,54 +8,60 @@
  * @...:Variable arguments corresponding to format specifiers
  * return:Number of characters printed
  */
-int _printf(const char *format,...)
+int _printf(const char *format, ...)
 {
-	int printed chars=0; /*counter for the number of chars printed*/
+	int printed_chars = 0; /*counter for the number of chars printed*/
 		va_list args; /*variable argument list*/
 
-	va_start (args, format); /*initialize the variable argument list*/
+	va_start(args, format); /*initialize the variable argument list*/
 
-        while (*format);
+	while (*format)
 	{
-		if (*format=='%'); /*check for the start of a format specifier*/
+		if (*format == '%') /*check for the start of a format specifier*/
 		{
-		format ++; /*move to the char after '%'*/
-		if (*format=='\0')
+		format++; /*move to the char after '%'*/
+		if (*format == '\0')
 		{
 			break; /*break if there is nothing after '%'*/
 
 		}
-		if (*format=='c') /*handle character format specifier*/
+		if (*format == 'c') /*handle character format specifier*/
 		{
-			char c = va arg(args,int); /*get character argument*/
+			char c = va_arg(args, int); /*get character argument*/
+
 			_putchar(c); /*print the char*/
-			printed chars ++;
+			printed chars++;
 		}
-		else if (*format=='s') /*handle string format specifier*/
+		else if (*format == 's') /*handle string format specifier*/
 		{
-			char*s=va arg(args,char*); /*get string argument*/
+			char *s = va_arg(args, char*); /*get string argument*/
+
 			while (*s) /*loop through the string*/
 			{
 				_putchar(*s); /*print each char*/
 				s++;
 				printed chars++;
 			}
-			else if(*format=='%') /*handle literal '%'*/
+			else if (*format == '%') /*handle literal '%'*/
 			{
 				_putchar('%'); /*print '%' char*/
 				printed_chars++;
-			}else{ /*handle invalid format specifier*/
+			}
+		       	else /*handle invalid format specifier*/
+			{
 				_putchar('%'); /*print '%'*/
 				_putchar(*format); /*print the inalid char*/
-				printed chars +=2;
+				printed chars += 2;
 			}
-		}else{
-			_putchar(*format); /*print regular chars*/
+		}
+		else
+		{
+		_putchar(*format); /*print regular chars*/
 			printed chars++;
 		}
-		format==;
+		format++;
 		}
 
-		va end(args); /*end using variable argument list*/
-return:(printed chars); /*return the total chars printed*/
+		va_end(args); /*end using variable argument list*/
+return (printed_chars); /*return the total chars printed*/
 	}
