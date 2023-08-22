@@ -1,12 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
+#include <stdarg.h>  /* Required for variable arguments */
 
-/* Function prototype for _printf */
+/* Custom _printf function */
 int _printf(const char *format, ...);
+
+/* Custom _putchar function */
+int _putchar(char c);
 
 #endif /* MAIN_H */
