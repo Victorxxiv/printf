@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdarg.h>  /* Required for variable arguments */
+#include <stdarg.h>
 #include <stddef.h>  /* Include this for NULL definition */
 
 /**
