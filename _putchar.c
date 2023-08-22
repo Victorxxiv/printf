@@ -1,4 +1,4 @@
-#include <unistd.h>  /* Required for the write function */
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -8,6 +8,5 @@
  */
 int _putchar(char c)
 {
-	/* Use the write system call to output a single character */
 	return (write(1, &c, 1));
 }
