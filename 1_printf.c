@@ -63,5 +63,6 @@ int _printf(const char *format, ...)
 		}
 
 		va_end(args); /*end using variable argument list*/
-return (printed_chars); /*return the total chars printed*/
-	}
+		return (printed_chars); /*return the total chars printed*/
+}
+
