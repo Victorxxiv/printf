@@ -1,4 +1,5 @@
 #include <unistd.h>  /* Required for the write function */
+#include "main.h"
 
 /**
  * _putchar - Writes a character to standard output
