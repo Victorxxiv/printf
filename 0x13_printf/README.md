@@ -1,2 +1,0 @@
-#printf
-Our printf project
