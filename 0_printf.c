@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stddef.h>  /* Include this for NULL definition */
 
 /**
  * _printf - Produces output according to a format.

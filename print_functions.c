@@ -70,4 +70,3 @@ int recursive_binary(unsigned int num)
 	_putchar('0' + num % 2);
 	return (count + 1);
 }
-
