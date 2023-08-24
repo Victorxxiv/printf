@@ -2,7 +2,7 @@
 
 /**
  * get_flags - Function calculates count of active flags.
- * Developed by Cindy.
+ * Developed by Cindy and Victor.
  * @format: Formatted string for displaying the arguments.
  * @i: Acepts a parameter.
  * Return: Flags:
