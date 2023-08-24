@@ -3,20 +3,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <stddef.h>
 #include <unistd.h>
-
-/* Custom _printf function */
-int _printf(const char *format, ...);
-
-/* Custom _putchar function */
-int _putchar(char c);
-int _strlen(char *s);
-int print_number(int num);
-int print_binary(unsigned int num);
 
 #define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
@@ -70,7 +57,19 @@ int print_percent(va_list types, char buffer[],
 /* Functions to print numbers */
 int print_int(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
-/* ... (other number printing functions) */
+int print_binary(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int print_unsigned(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int print_octal(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int print_hexadecimal(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int print_hexa_upper(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+
+int print_hexa(va_list types, char map_to[],
+char buffer[], int flags, char flag_ch, int width, int precision, int size);
 
 /* Function used to print non-printable characters */
 int print_non_printable(va_list types, char buffer[],
@@ -95,7 +94,18 @@ int print_rot13string(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
 
 /* Width handler - handles width-related operations */
-/* ... (width-related functions) */
+int handle_write_char(char c, char buffer[],
+		int flags, int width, int precision, int size);
+int write_number(int is_positive, int ind, char buffer[],
+		int flags, int width, int precision, int size);
+int write_num(int ind, char bff[], int flags, int width, int precision,
+		int length, char padd, char extra_c);
+int write_pointer(char buffer[], int ind, int length,
+		int width, int flags, char padd, char extra_c, int padd_start);
+
+int write_unsgnd(int is_negative, int ind,
+		char buffer[],
+		int flags, int width, int precision, int size);
 
 /****************** UTILITIES ******************/
 int is_printable(char);
